@@ -26,14 +26,10 @@ import EditTitle from "./components/pages/EditTitle";
 
 function App() {
 	const [user, setUser] = useState(UserContext);
-	const logUser = () => {
-		if (!user.username && sessionStorage.getItem("user") !== null) {
-			setUser(JSON.parse(sessionStorage.getItem("user")));
-		}
-	};
-	useEffect(() => {
-		logUser();
-	}, []);
+	useMemo(() => ({ user, setUser }), [user, setUser]);
+	if (!user.username && sessionStorage.getItem("user") !== null) {
+		setUser(JSON.parse(sessionStorage.getItem("user")));
+	}
 	return (
 		<Router basename="/knihovna-frontend">
 			<UserContext.Provider value={{ user, setUser }}>

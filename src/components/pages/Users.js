@@ -8,7 +8,7 @@ function Users() {
 	const [origUsers, setOrigUsers] = useState(undefined);
 	const loadUsers = () => {
 		axios
-			.get("/dispatcher/users", {
+			.get("/api/users", {
 				withCredentials: true,
 			})
 			.then((response) => {

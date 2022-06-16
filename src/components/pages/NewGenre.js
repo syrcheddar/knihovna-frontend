@@ -15,7 +15,7 @@ function NewGenre() {
 		}
 		axios
 			.post(
-				"/dispatcher/genres",
+				"/api/genres",
 				{
 					name: genreName,
 				},

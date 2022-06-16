@@ -17,8 +17,8 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Login from "./Login";
 import axios from "../../api/axios";
 import { UserContext } from "../../context/UserContext";
-const REGISTER_URL = "/dispatcher/users/register";
-const LOGIN_URL = "/dispatcher/users/login";
+const REGISTER_URL = "/api/users/register";
+const LOGIN_URL = "/api/users/login";
 
 //todo you can go from login to register but not back, then there is infinite loop because
 // it creates new components again and again instead of just reference
@@ -104,7 +104,7 @@ function Register(props) {
 						}
 					});
 				const u = await axios
-					.get("dispatcher/users/current", {
+					.get("api/users/current", {
 						withCredentials: true,
 					})
 					.then((resp) => {

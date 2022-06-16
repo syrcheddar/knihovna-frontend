@@ -16,7 +16,7 @@ function User() {
 
 	const getUser = async () => {
 		await axios
-			.get("/dispatcher/users/username/" + username)
+			.get("/api/users/username/" + username)
 			.then((response) => {
 				setCurrUser(response.data[0]);
 			})
@@ -26,7 +26,7 @@ function User() {
 	};
 	const getReservations = async () => {
 		await axios
-			.get("/dispatcher/users/" + username + "/reservations")
+			.get("/api/users/" + username + "/reservations")
 			.then((response) => {
 				setReservation(response.data);
 			})
@@ -35,10 +35,10 @@ function User() {
 			});
 	};
 	const loanBook = async (id) => {
-		console.log(id)
+		console.log(id);
 		await axios
 			.post(
-				"/dispatcher/bookloans",
+				"/api/bookloans",
 				{ reservationId: id, userId: currUser.id },
 				// [id, currUser.id],
 				{
@@ -47,7 +47,7 @@ function User() {
 				}
 			)
 			.then((response) => {
-				console.log(response)
+				console.log(response);
 				getReservations();
 				getBookLoans();
 			})
@@ -57,14 +57,11 @@ function User() {
 	};
 	const returnBook = async (id) => {
 		await axios
-			.put(
-				"/dispatcher/bookloans/return",
-				{
-					data: { id: id },
-					headers: { "Content-Type": "application/json" },
-					withCredentials: true,
-				}
-			)
+			.put("/api/bookloans/return", {
+				data: { id: id },
+				headers: { "Content-Type": "application/json" },
+				withCredentials: true,
+			})
 			.then((response) => {
 				getReservations();
 				getBookLoans();
@@ -76,7 +73,7 @@ function User() {
 
 	const getBookLoans = async () => {
 		await axios
-			.get("/dispatcher/users/" + username + "/bookloans")
+			.get("/api/users/" + username + "/bookloans")
 			.then((response) => {
 				setBookLoan(response.data);
 				//console.log(response.data);
@@ -89,7 +86,7 @@ function User() {
 	const setUserGuest = () => {
 		axios
 			.post(
-				"/dispatcher/users/guest",
+				"/api/users/guest",
 				{ id: currUser.id },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -106,7 +103,7 @@ function User() {
 	const setUserLibrarian = () => {
 		axios
 			.post(
-				"/dispatcher/users/librarian",
+				"/api/users/librarian",
 				{ id: currUser.id },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -123,7 +120,7 @@ function User() {
 	const cancelReservation = async (id) => {
 		//console.log(availableBooks);
 		await axios
-			.delete("/dispatcher/reservations", {
+			.delete("/api/reservations", {
 				headers: { "Content-Type": "application/json" },
 				data: { id: id },
 				withCredentials: true,

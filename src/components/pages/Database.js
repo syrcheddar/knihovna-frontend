@@ -16,7 +16,7 @@ export default function Database() {
 	const [books, setBooks] = useState(allBooks);
 	const getBooks = () => {
 		axios
-			.get("/dispatcher/titles/all")
+			.get("/api/titles/all")
 			.then((response) => {
 				setAllBooks(response.data);
 			})
@@ -26,7 +26,7 @@ export default function Database() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/dispatcher/genres")
+			.get("/api/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -123,7 +123,7 @@ export default function Database() {
 
 	const changeBooks = (g) => {
 		axios
-			.get("/dispatcher/titles/g/" + g)
+			.get("/api/titles/g/" + g)
 			.then((response) => {
 				setBooks(response.data);
 			})

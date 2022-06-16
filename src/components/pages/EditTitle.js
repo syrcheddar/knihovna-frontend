@@ -24,7 +24,7 @@ function EditTitle() {
 
 	const getBook = () => {
 		axios
-			.get("/dispatcher/titles/b/" + isbn)
+			.get("/api/titles/b/" + isbn)
 			.then((response) => {
 				console.log(response);
 				setBook(response.data[0]);
@@ -35,7 +35,7 @@ function EditTitle() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/dispatcher/genres")
+			.get("/api/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 				console.log(response.data);
@@ -47,7 +47,7 @@ function EditTitle() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/dispatcher/authors")
+			.get("/api/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -67,7 +67,7 @@ function EditTitle() {
 		}
 		axios
 			.put(
-				"/dispatcher/titles/update/" + oldISBN,
+				"/api/titles/update/" + oldISBN,
 				{
 					isbn: ISBN,
 					titleName: bookName,
@@ -194,9 +194,11 @@ function EditTitle() {
 															console.log(selectedGenres);
 															if (e.target.checked) selectedGenres.push(g);
 															else
-																setSelectedGenres(selectedGenres.filter(
-																	(genre) => genre.name !== g.name
-																));
+																setSelectedGenres(
+																	selectedGenres.filter(
+																		(genre) => genre.name !== g.name
+																	)
+																);
 														}}
 														defaultChecked={
 															selectedGenres?.filter(

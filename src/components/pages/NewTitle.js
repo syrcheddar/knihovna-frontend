@@ -21,7 +21,7 @@ function NewTitle() {
 
 	const getGenres = () => {
 		axios
-			.get("/dispatcher/genres")
+			.get("/api/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -32,7 +32,7 @@ function NewTitle() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/dispatcher/authors")
+			.get("/api/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -52,7 +52,7 @@ function NewTitle() {
 		}
 		axios
 			.post(
-				"/dispatcher/titles/create",
+				"/api/titles/create",
 				{
 					isbn: ISBN,
 					titleName: bookName,

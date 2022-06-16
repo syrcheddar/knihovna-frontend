@@ -15,7 +15,7 @@ function DeleteGenre() {
 
 	const getAllGenres = () => {
 		axios
-			.get("/dispatcher/genres")
+			.get("/api/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 				console.log(response.data);
@@ -33,7 +33,7 @@ function DeleteGenre() {
 			return;
 		}
 		axios
-			.delete("/dispatcher/genres/delete/" + selectedGenre.id, {
+			.delete("/api/genres/delete/" + selectedGenre.id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})

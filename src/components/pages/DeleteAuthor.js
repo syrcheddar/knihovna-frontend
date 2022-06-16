@@ -16,7 +16,7 @@ function DeleteAuthor() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/dispatcher/authors")
+			.get("/api/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -32,18 +32,19 @@ function DeleteAuthor() {
 			setError("Vyberte žánr");
 			return;
 		}
-		axios.delete("/dispatcher/authors/delete/" + selectedAuthor.id, {
-			headers: { "Content-Type": "application/json" },
-			withCredentials: true,
-		})
-		.then(() => {
-			navigate("/");
-		})
-		.catch((e) => {
-			if (e.response.status == 409) {
-				setError("Autor má nějaký titul");
-			}
-		});
+		axios
+			.delete("/api/authors/delete/" + selectedAuthor.id, {
+				headers: { "Content-Type": "application/json" },
+				withCredentials: true,
+			})
+			.then(() => {
+				navigate("/");
+			})
+			.catch((e) => {
+				if (e.response.status == 409) {
+					setError("Autor má nějaký titul");
+				}
+			});
 	};
 	return (
 		<>

@@ -15,7 +15,7 @@ function NewAuthor() {
 		}
 		axios
 			.post(
-				"/dispatcher/authors",
+				"/api/authors",
 				{
 					firstName: firstName,
 					lastName: lastName,

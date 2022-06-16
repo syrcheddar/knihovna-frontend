@@ -91,7 +91,7 @@ function Menu() {
 									sessionStorage.clear();
 									setUser(null);
 									axios
-										.get("dispatcher/users/logout", { withCredentials: true })
+										.get("api/users/logout", { withCredentials: true })
 										.then(setUser(React.createContext(null)));
 								}}
 							>

@@ -17,7 +17,7 @@ export default function Author() {
 	const [books, setBooks] = useState(allBooks);
 	const getBooks = () => {
 		const b = axios
-			.get("/dispatcher/authors/" + id + "/titles")
+			.get("/api/authors/" + id + "/titles")
 			.then((response) => {
 				setAllBooks(response.data);
 			})
@@ -27,7 +27,7 @@ export default function Author() {
 	};
 	const getGenres = () => {
 		const b = axios
-			.get("/dispatcher/genres")
+			.get("/api/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -77,7 +77,7 @@ export default function Author() {
 
 	const changeBooks = (g) => {
 		axios
-			.get("/dispatcher/titles/g/" + g)
+			.get("/api/titles/g/" + g)
 			.then((response) => {
 				setBooks(response.data);
 			})

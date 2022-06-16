@@ -22,7 +22,7 @@ function Profile() {
 
 	const getReservations = async () => {
 		await axios
-			.get("/dispatcher/users/" + user.username + "/reservations")
+			.get("/api/users/" + user.username + "/reservations")
 			.then((response) => {
 				setReservation(response.data);
 				console.log(response.data);
@@ -34,7 +34,7 @@ function Profile() {
 
 	const getBookLoans = async () => {
 		await axios
-			.get("/dispatcher/users/" + user.username + "/bookloans")
+			.get("/api/users/" + user.username + "/bookloans")
 			.then((response) => {
 				setBookLoan(response.data);
 				//console.log(response.data);
@@ -44,9 +44,9 @@ function Profile() {
 			});
 	};
 
-	const cancelReservation =  (id) => {
-		 axios
-			.delete("/dispatcher/reservations", {
+	const cancelReservation = (id) => {
+		axios
+			.delete("/api/reservations", {
 				headers: { "Content-Type": "application/json" },
 				data: { id: id },
 				withCredentials: true,
@@ -58,7 +58,7 @@ function Profile() {
 
 		//console.log(availableBooks);
 		// await axios
-		// 	.delete("/dispatcher/reservations/" + id)
+		// 	.delete("/api/reservations/" + id)
 		// 	.then(setReservation(reservations.filter((p) => p[0] !== id)))
 		// 	.catch((e) => {
 		// 		console.error(e);

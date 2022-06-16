@@ -19,7 +19,7 @@ function Title() {
 
 	const getBook = () => {
 		axios
-			.get("/dispatcher/titles/b/" + isbn)
+			.get("/api/titles/b/" + isbn)
 			.then((response) => {
 				setBook(response.data[0]);
 				console.log(response);
@@ -31,7 +31,7 @@ function Title() {
 
 	const getAllBooks = () => {
 		axios
-			.get("/dispatcher/books/isbn/" + isbn)
+			.get("/api/books/isbn/" + isbn)
 			.then((response) => {
 				setAllBooks(response.data);
 				console.log(response);
@@ -42,7 +42,7 @@ function Title() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/dispatcher/titles/" + isbn + "/genres")
+			.get("/api/titles/" + isbn + "/genres")
 			.then((response) => {
 				setGenres(response.data);
 			})
@@ -52,7 +52,7 @@ function Title() {
 	};
 	const getAvailableBooks = () => {
 		axios
-			.get("/dispatcher/bookloans/getfree/" + isbn)
+			.get("/api/bookloans/getfree/" + isbn)
 			.then((response) => {
 				console.log(response);
 				setAvailableBooks(response.data);
@@ -65,7 +65,7 @@ function Title() {
 	const reservateBook = () => {
 		axios
 			.post(
-				"/dispatcher/reservations",
+				"/api/reservations",
 				{ bookID: parseInt(availableBooks[0]) },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -85,7 +85,7 @@ function Title() {
 	const deleteBook = (id) => {
 		console.log(id);
 		axios
-			.delete("/dispatcher/books/delete/" + id, {
+			.delete("/api/books/delete/" + id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})
@@ -96,7 +96,7 @@ function Title() {
 	const addBook = () => {
 		axios
 			.post(
-				"/dispatcher/books/add",
+				"/api/books/add",
 				{ isbn: book.isbn, titleName: book.titleName },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -110,7 +110,7 @@ function Title() {
 	const deleteTitle = () => {
 		console.log(book);
 		axios
-			.delete("/dispatcher/titles/delete/" + book.id, {
+			.delete("/api/titles/delete/" + book.id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})
@@ -120,7 +120,7 @@ function Title() {
 		if (book !== undefined) {
 			axios
 				.get(
-					"/dispatcher/authors/" + book.author.firstName + "/" + book.author.lastName
+					"/api/authors/" + book.author.firstName + "/" + book.author.lastName
 				)
 				.then((response) => {
 					setAuthor(response.data[0]);

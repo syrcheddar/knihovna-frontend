@@ -32,35 +32,33 @@ function App() {
 	}
 
 	return (
-		<BrowserRouter basename="/knihovna-frontend">
-			<UserContext.Provider value={userValue}>
-				<Menu />
-				<Routes>
-					<Route path="/" element={<HomePage />} />
-					<Route path="/books" element={<Database />} />
+		<Router basename="/knihovna-frontend">
+			<Menu />
+			<Routes>
+				<Route path="/" element={<HomePage />} />
+				<Route path="/books" element={<Database />} />
 
-					{user?.userType === "LIBRARIAN" ? (
-						<>
-							<Route path="/books/new" element={<NewTitle />} />
-							<Route path="/books/edit/:isbn" element={<EditTitle />} />
-							<Route path="/authors/delete" element={<DeleteAuthor />} />
-							<Route path="/genres/delete" element={<DeleteGenre />} />
-							<Route path="/authors/new" element={<NewAuthor />} />
-							<Route path="/genres/new" element={<NewGenre />} />
-							<Route path="/userlist" element={<Users />} />{" "}
-						</>
-					) : (
-						""
-					)}
+				{user?.userType === "LIBRARIAN" ? (
+					<>
+						<Route path="/books/new" element={<NewTitle />} />
+						<Route path="/books/edit/:isbn" element={<EditTitle />} />
+						<Route path="/authors/delete" element={<DeleteAuthor />} />
+						<Route path="/genres/delete" element={<DeleteGenre />} />
+						<Route path="/authors/new" element={<NewAuthor />} />
+						<Route path="/genres/new" element={<NewGenre />} />
+						<Route path="/userlist" element={<Users />} />{" "}
+					</>
+				) : (
+					""
+				)}
 
-					<Route path="/profile" element={<Profile />} />
-					<Route path="/users/u/:username" element={<User />} />
-					<Route path="/books/b/:isbn" element={<Title />} />
-					<Route path="/authors/a/:id" element={<Author />} />
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</UserContext.Provider>
-		</BrowserRouter>
+				<Route path="/profile" element={<Profile />} />
+				<Route path="/users/u/:username" element={<User />} />
+				<Route path="/books/b/:isbn" element={<Title />} />
+				<Route path="/authors/a/:id" element={<Author />} />
+				<Route path="*" element={<NotFound />} />
+			</Routes>
+		</Router>
 	);
 }
 

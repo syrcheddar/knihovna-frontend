@@ -10,7 +10,7 @@ import { Dropdown } from "bootstrap";
 function Menu() {
 	const [loginModalShow, setLoginModalShow] = useState(false); //login
 	const [registerModalShow, setRegisterModalShow] = useState(false); //register
-	const { user, setUser } = useContext(UserContext);
+	const { user, setUser } = useState("asdasd");
 	const navigate = useNavigate();
 	return (
 		<>
@@ -81,7 +81,7 @@ function Menu() {
 						}}
 					/>
 
-					{user.username ? (
+					{user?.username ? (
 						<Nav className="tvojemama" style={{ marginLeft: "auto" }}>
 							<Nav.Link onClick={() => navigate("/profile")}>Profile</Nav.Link>
 							<Nav.Link

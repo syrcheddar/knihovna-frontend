@@ -28,7 +28,7 @@ function Register(props) {
 		color: "white",
 	};
 
-	const { user, setUser } = useContext(UserContext);
+	const { user, setUser } = useState("asdasd");
 
 	const closeAndOpen = () => {
 		props.onHide();

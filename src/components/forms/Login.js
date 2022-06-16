@@ -26,7 +26,7 @@ function Login(props) {
 		color: "white",
 	};
 	const navigate = useNavigate();
-	const { user, setUser } = useContext(UserContext);
+	const { user, setUser } = useState("asdasd");
 
 	const [passwordShown, setPasswordShown] = useState(false);
 

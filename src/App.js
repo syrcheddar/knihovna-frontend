@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import logo from "./logo.svg";
 import {
 	BrowserRouter as Router,
@@ -26,14 +26,20 @@ import EditTitle from "./components/pages/EditTitle";
 
 function App() {
 	const [user, setUser] = useState(UserContext);
-	const userValue = useMemo(() => ({ user, setUser }), [user, setUser]);
+	const logUser = () => {
+		if (!user.username && sessionStorage.getItem("user") !== null) {
+			setUser(JSON.parse(sessionStorage.getItem("user")));
+		}
+	};
 	if (!user.username && sessionStorage.getItem("user") !== null) {
 		setUser(JSON.parse(sessionStorage.getItem("user")));
 	}
-
+	useEffect(() => {
+		logUser();
+	}, []);
 	return (
 		<Router basename="/knihovna-frontend">
-			<UserContext.Provider value={{user,setUser}}>
+			<UserContext.Provider value={{ user, setUser }}>
 				<Menu />
 				<Routes>
 					<Route path="/" element={<HomePage />} />

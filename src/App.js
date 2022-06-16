@@ -31,9 +31,6 @@ function App() {
 			setUser(JSON.parse(sessionStorage.getItem("user")));
 		}
 	};
-	if (!user.username && sessionStorage.getItem("user") !== null) {
-		setUser(JSON.parse(sessionStorage.getItem("user")));
-	}
 	useEffect(() => {
 		logUser();
 	}, []);

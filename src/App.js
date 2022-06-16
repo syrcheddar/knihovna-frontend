@@ -1,6 +1,11 @@
 import React, { useMemo, useState } from "react";
 import logo from "./logo.svg";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+	BrowserRouter as Router,
+	Routes,
+	Route,
+	HashRouter,
+} from "react-router-dom";
 import "./App.css";
 import Menu from "./components/shared/Menu";
 import { UserContext } from "./context/UserContext";
@@ -27,7 +32,7 @@ function App() {
 	}
 
 	return (
-		<Router basename="/knihovna-frontend">
+		<HashRouter basename="/knihovna-frontend">
 			<UserContext.Provider value={userValue}>
 				<Menu />
 				<Routes>
@@ -55,7 +60,7 @@ function App() {
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</UserContext.Provider>
-		</Router>
+		</HashRouter>
 	);
 }
 

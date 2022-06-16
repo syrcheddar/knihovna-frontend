@@ -27,7 +27,7 @@ function App() {
 	}
 
 	return (
-		<Router>
+		<Router path="/knihovna-frontend">
 			<UserContext.Provider value={userValue}>
 				<Menu />
 				<Routes>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { CustomMenu, CustomToggle } from "./Dropdown";
 
 function DeleteAuthor() {
@@ -16,7 +16,7 @@ function DeleteAuthor() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/api/authors")
+			.get("/dispatcher/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -33,7 +33,7 @@ function DeleteAuthor() {
 			return;
 		}
 		axios
-			.delete("/api/authors/delete/" + selectedAuthor.id, {
+			.delete("/dispatcher/authors/delete/" + selectedAuthor.id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})

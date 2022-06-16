@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 
 function NewAuthor() {
 	const [error, setError] = useState(" ");
@@ -15,7 +15,7 @@ function NewAuthor() {
 		}
 		axios
 			.post(
-				"/api/authors",
+				"/dispatcher/authors",
 				{
 					firstName: firstName,
 					lastName: lastName,

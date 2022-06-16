@@ -3,9 +3,9 @@ import { Container, DropdownButton, Nav, Navbar } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import Login from "../forms/Login";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import "./Menu.css";
-import { login } from "../MockApi";
+import { login } from "../Mockdispatcher";
 import Register from "../forms/Register";
 import { Dropdown } from "bootstrap";
 function Menu() {
@@ -91,7 +91,7 @@ function Menu() {
 									sessionStorage.clear();
 									setUser(null);
 									axios
-										.get("api/users/logout", { withCredentials: true })
+										.get("dispatcher/users/logout", { withCredentials: true })
 										.then(setUser(React.createContext(null)));
 								}}
 							>

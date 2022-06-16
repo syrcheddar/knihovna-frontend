@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { CustomMenu, CustomToggle } from "./Dropdown";
 
 function NewGenre() {
@@ -15,7 +15,7 @@ function NewGenre() {
 		}
 		axios
 			.post(
-				"/api/genres",
+				"/dispatcher/genres",
 				{
 					name: genreName,
 				},

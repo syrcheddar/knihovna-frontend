@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Container, Row } from "react-bootstrap";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import PaginatedUsers from "./PaginatedUsers";
 
 function Users() {
@@ -8,7 +8,7 @@ function Users() {
 	const [origUsers, setOrigUsers] = useState(undefined);
 	const loadUsers = () => {
 		axios
-			.get("/api/users", {
+			.get("/dispatcher/users", {
 				withCredentials: true,
 			})
 			.then((response) => {

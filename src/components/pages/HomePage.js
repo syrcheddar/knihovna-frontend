@@ -1,7 +1,7 @@
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import React, { useEffect, useState } from "react";
 import "./Carousel.css";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { Container, Row } from "react-bootstrap";
 import { Carousel } from "./Carousel.tsx";
 
@@ -9,7 +9,7 @@ function HomePage() {
 	const [books, setBooks] = useState();
 	const getFavorites = () => {
 		axios
-			.get("/api/titles/favourite")
+			.get("/dispatcher/titles/favourite")
 			.then((response) => {
 				setBooks(response.data);
 			})

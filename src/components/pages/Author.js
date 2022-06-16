@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Dropdown, Row } from "react-bootstrap";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import "./Database.css";
 import { useParams, useSearchParams } from "react-router-dom";
 import AuthorBooks from "./AuthorBooks";
@@ -17,7 +17,7 @@ export default function Author() {
 	const [books, setBooks] = useState(allBooks);
 	const getBooks = () => {
 		const b = axios
-			.get("/api/authors/" + id + "/titles")
+			.get("/dispatcher/authors/" + id + "/titles")
 			.then((response) => {
 				setAllBooks(response.data);
 			})
@@ -27,7 +27,7 @@ export default function Author() {
 	};
 	const getGenres = () => {
 		const b = axios
-			.get("/api/genres")
+			.get("/dispatcher/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -77,7 +77,7 @@ export default function Author() {
 
 	const changeBooks = (g) => {
 		axios
-			.get("/api/titles/g/" + g)
+			.get("/dispatcher/titles/g/" + g)
 			.then((response) => {
 				setBooks(response.data);
 			})

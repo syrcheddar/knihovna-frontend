@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { CustomMenu, CustomToggle } from "./Dropdown";
 
 function EditTitle() {
@@ -24,7 +24,7 @@ function EditTitle() {
 
 	const getBook = () => {
 		axios
-			.get("/api/titles/b/" + isbn)
+			.get("/dispatcher/titles/b/" + isbn)
 			.then((response) => {
 				console.log(response);
 				setBook(response.data[0]);
@@ -35,7 +35,7 @@ function EditTitle() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/api/genres")
+			.get("/dispatcher/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 				console.log(response.data);
@@ -47,7 +47,7 @@ function EditTitle() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/api/authors")
+			.get("/dispatcher/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -67,7 +67,7 @@ function EditTitle() {
 		}
 		axios
 			.put(
-				"/api/titles/update/" + oldISBN,
+				"/dispatcher/titles/update/" + oldISBN,
 				{
 					isbn: ISBN,
 					titleName: bookName,

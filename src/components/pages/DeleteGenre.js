@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { CustomMenu, CustomToggle } from "./Dropdown";
 
 function DeleteGenre() {
@@ -15,7 +15,7 @@ function DeleteGenre() {
 
 	const getAllGenres = () => {
 		axios
-			.get("/api/genres")
+			.get("/dispatcher/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 				console.log(response.data);
@@ -33,7 +33,7 @@ function DeleteGenre() {
 			return;
 		}
 		axios
-			.delete("/api/genres/delete/" + selectedGenre.id, {
+			.delete("/dispatcher/genres/delete/" + selectedGenre.id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})

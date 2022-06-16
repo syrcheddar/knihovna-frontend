@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container, Dropdown, Row, Col } from "react-bootstrap";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import "./Database.css";
 import PaginatedBooks from "./PaginatedBooks";
 import { useSearchParams } from "react-router-dom";
@@ -16,7 +16,7 @@ export default function Database() {
 	const [books, setBooks] = useState(allBooks);
 	const getBooks = () => {
 		axios
-			.get("/api/titles/all")
+			.get("/dispatcher/titles/all")
 			.then((response) => {
 				setAllBooks(response.data);
 			})
@@ -26,7 +26,7 @@ export default function Database() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/api/genres")
+			.get("/dispatcher/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -123,7 +123,7 @@ export default function Database() {
 
 	const changeBooks = (g) => {
 		axios
-			.get("/api/titles/g/" + g)
+			.get("/dispatcher/titles/g/" + g)
 			.then((response) => {
 				setBooks(response.data);
 			})

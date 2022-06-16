@@ -10,7 +10,7 @@ function PaginatedBooks({ books, itemsPerPage }) {
 	const [currentItems, setCurrentItems] = useState(null);
 	const [pageCount, setPageCount] = useState(0);
 	// Here we use item offsets; we could also use page offsets
-	// following the API or data you're working with.
+	// following the dispatcher or data you're working with.
 	const [itemOffset, setItemOffset] = useState(0);
 	useEffect(() => {
 		setBooks(books);

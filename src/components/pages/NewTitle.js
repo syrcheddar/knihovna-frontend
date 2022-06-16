@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button, Col, Container, Dropdown, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { CustomMenu, CustomToggle } from "./Dropdown";
 
 function NewTitle() {
@@ -21,7 +21,7 @@ function NewTitle() {
 
 	const getGenres = () => {
 		axios
-			.get("/api/genres")
+			.get("/dispatcher/genres")
 			.then((response) => {
 				setAllGenres(response.data);
 			})
@@ -32,7 +32,7 @@ function NewTitle() {
 
 	const getAllAuthors = () => {
 		axios
-			.get("/api/authors")
+			.get("/dispatcher/authors")
 			.then((response) => {
 				setAllAuthors(response.data);
 			})
@@ -52,7 +52,7 @@ function NewTitle() {
 		}
 		axios
 			.post(
-				"/api/titles/create",
+				"/dispatcher/titles/create",
 				{
 					isbn: ISBN,
 					titleName: bookName,

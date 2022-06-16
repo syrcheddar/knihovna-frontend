@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import "./Title.css";
 import { UserContext } from "../../context/UserContext";
 
@@ -19,7 +19,7 @@ function Title() {
 
 	const getBook = () => {
 		axios
-			.get("/api/titles/b/" + isbn)
+			.get("/dispatcher/titles/b/" + isbn)
 			.then((response) => {
 				setBook(response.data[0]);
 				console.log(response);
@@ -31,7 +31,7 @@ function Title() {
 
 	const getAllBooks = () => {
 		axios
-			.get("/api/books/isbn/" + isbn)
+			.get("/dispatcher/books/isbn/" + isbn)
 			.then((response) => {
 				setAllBooks(response.data);
 				console.log(response);
@@ -42,7 +42,7 @@ function Title() {
 	};
 	const getGenres = () => {
 		axios
-			.get("/api/titles/" + isbn + "/genres")
+			.get("/dispatcher/titles/" + isbn + "/genres")
 			.then((response) => {
 				setGenres(response.data);
 			})
@@ -52,7 +52,7 @@ function Title() {
 	};
 	const getAvailableBooks = () => {
 		axios
-			.get("/api/bookloans/getfree/" + isbn)
+			.get("/dispatcher/bookloans/getfree/" + isbn)
 			.then((response) => {
 				console.log(response);
 				setAvailableBooks(response.data);
@@ -65,7 +65,7 @@ function Title() {
 	const reservateBook = () => {
 		axios
 			.post(
-				"/api/reservations",
+				"/dispatcher/reservations",
 				{ bookID: parseInt(availableBooks[0]) },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -85,7 +85,7 @@ function Title() {
 	const deleteBook = (id) => {
 		console.log(id);
 		axios
-			.delete("/api/books/delete/" + id, {
+			.delete("/dispatcher/books/delete/" + id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})
@@ -96,7 +96,7 @@ function Title() {
 	const addBook = () => {
 		axios
 			.post(
-				"/api/books/add",
+				"/dispatcher/books/add",
 				{ isbn: book.isbn, titleName: book.titleName },
 				{
 					headers: { "Content-Type": "application/json" },
@@ -110,7 +110,7 @@ function Title() {
 	const deleteTitle = () => {
 		console.log(book);
 		axios
-			.delete("/api/titles/delete/" + book.id, {
+			.delete("/dispatcher/titles/delete/" + book.id, {
 				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})
@@ -120,7 +120,10 @@ function Title() {
 		if (book !== undefined) {
 			axios
 				.get(
-					"/api/authors/" + book.author.firstName + "/" + book.author.lastName
+					"/dispatcher/authors/" +
+						book.author.firstName +
+						"/" +
+						book.author.lastName
 				)
 				.then((response) => {
 					setAuthor(response.data[0]);

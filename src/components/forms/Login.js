@@ -14,9 +14,9 @@ import "./Register.css";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import Register from "./Register";
 import { UserContext } from "../../context/UserContext";
-import axios from "../../api/axios";
+import axios from "../../connection/axios";
 import { useNavigate } from "react-router-dom";
-const LOGIN_URL = "/api/users/login";
+const LOGIN_URL = "/dispatcher/users/login";
 
 //todo you can go from login to register but not back, then there is infinite loop because
 // it creates new components again and again instead of just reference
@@ -87,7 +87,7 @@ function Login(props) {
 
 			if (logged) {
 				const u = await axios
-					.get("api/users/current", {
+					.get("dispatcher/users/current", {
 						withCredentials: true,
 					})
 					.then((resp) => {

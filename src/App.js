@@ -4,6 +4,7 @@ import {
 	BrowserRouter as Router,
 	Routes,
 	Route,
+	BrowserRouter,
 } from "react-router-dom";
 import "./App.css";
 import Menu from "./components/shared/Menu";
@@ -31,7 +32,7 @@ function App() {
 	}
 
 	return (
-		<Router basename="/knihovna-frontend">
+		<BrowserRouter basename="/knihovna-frontend">
 			<UserContext.Provider value={userValue}>
 				<Menu />
 				<Routes>
@@ -59,7 +60,7 @@ function App() {
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</UserContext.Provider>
-		</Router>
+		</BrowserRouter>
 	);
 }
 

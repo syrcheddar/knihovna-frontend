@@ -5,7 +5,6 @@ import { UserContext } from "../../context/UserContext";
 import Login from "../forms/Login";
 import axios from "../../connection/axios";
 import "./Menu.css";
-import { login } from "../Mockdispatcher";
 import Register from "../forms/Register";
 import { Dropdown } from "bootstrap";
 function Menu() {

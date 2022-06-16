@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/knihovna-frontend/static/css/main.7733cc91.css",
-    "main.js": "/knihovna-frontend/static/js/main.059e85b4.js",
+    "main.js": "/knihovna-frontend/static/js/main.714bd106.js",
     "static/js/787.57a38f05.chunk.js": "/knihovna-frontend/static/js/787.57a38f05.chunk.js",
     "static/media/logo.svg": "/knihovna-frontend/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/knihovna-frontend/index.html",
     "main.7733cc91.css.map": "/knihovna-frontend/static/css/main.7733cc91.css.map",
-    "main.059e85b4.js.map": "/knihovna-frontend/static/js/main.059e85b4.js.map",
+    "main.714bd106.js.map": "/knihovna-frontend/static/js/main.714bd106.js.map",
     "787.57a38f05.chunk.js.map": "/knihovna-frontend/static/js/787.57a38f05.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7733cc91.css",
-    "static/js/main.059e85b4.js"
+    "static/js/main.714bd106.js"
   ]
 }

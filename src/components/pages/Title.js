@@ -309,51 +309,58 @@ function Title() {
 									{availableBooks !== undefined ? availableBooks.length : ""}
 								</h2>
 
-								{user.username ? (
-									availableBooks !== undefined ? (
-										availableBooks.length > 0 ? (
-											successBookReserve === false ? (
-												<Button
-													style={{
-														backgroundColor: "green",
-														borderColor: "green",
-													}}
-													onClick={() => {
-														reservateBook();
-													}}
-												>
-													Rezervovat
-												</Button>
+								{user?.userType !== "LIBRARIAN" ? (
+									user.username ? (
+										availableBooks !== undefined ? (
+											availableBooks.length > 0 ? (
+												successBookReserve === false ? (
+													<Button
+														style={{
+															backgroundColor: "green",
+															borderColor: "green",
+														}}
+														onClick={() => {
+															reservateBook();
+														}}
+													>
+														Rezervovat
+													</Button>
+												) : (
+													<Button
+														style={{
+															backgroundColor: "white",
+															borderColor: "white",
+															color: "green",
+															cursor: "default",
+														}}
+													>
+														Kniha byla rezervována!
+													</Button>
+												)
 											) : (
 												<Button
 													style={{
-														backgroundColor: "white",
-														borderColor: "white",
-														color: "green",
-														cursor: "default",
+														backgroundColor: "red",
+														border: "none",
+														cursor: "not-allowed",
 													}}
 												>
-													Kniha byla rezervována!
+													Není žádná volná kniha k rezervaci
 												</Button>
 											)
 										) : (
-											<Button
-												style={{
-													backgroundColor: "red",
-													border: "none",
-													cursor: "not-allowed",
-												}}
-											>
-												Není žádná volná kniha k rezervaci
-											</Button>
+											<div>
+												{" "}
+												Knihy nebyly nalezeny. Chyba na straně připojení
+											</div>
 										)
 									) : (
-										<div> Knihy nebyly nalezeny. Chyba na straně připojení</div>
+										<div style={{ color: "crimson" }}>
+											Přihlašte se pro možnost rezervovat knihu
+										</div>
 									)
 								) : (
-									<div style={{ color: "crimson" }}>
-										Přihlašte se pro možnost rezervovat knihu
-									</div>
+									" "
 								)}
 								{user?.userType === "LIBRARIAN" ? (
 									<>

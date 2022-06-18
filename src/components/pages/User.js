@@ -20,7 +20,7 @@ function User() {
 				withCredentials: true,
 			})
 			.then((response) => {
-				setCurrUser(response.data[0]);
+				setCurrUser(response.data);
 			})
 			.catch((e) => {
 				console.error("Server unavailable");
@@ -59,11 +59,14 @@ function User() {
 	};
 	const returnBook = async (id) => {
 		await axios
-			.put("/dispatcher/bookloans/return", {
-				data: { id: id },
-				headers: { "Content-Type": "application/json" },
-				withCredentials: true,
-			})
+			.put(
+				"/dispatcher/bookloans/return",
+				{ id: id },
+				{
+					headers: { "Content-Type": "application/json" },
+					withCredentials: true,
+				}
+			)
 			.then((response) => {
 				getReservations();
 				getBookLoans();

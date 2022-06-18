@@ -17,7 +17,6 @@ function User() {
 	const getUser = async () => {
 		await axios
 			.get("/dispatcher/users/username/" + username, {
-				headers: { "Content-Type": "application/json" },
 				withCredentials: true,
 			})
 			.then((response) => {

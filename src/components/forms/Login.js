@@ -151,11 +151,7 @@ function Login(props) {
 			>
 				<Modal.Header closeButton style={{ alignItems: "flex-start" }}>
 					<Modal.Body className="headerText">
-						{Object.keys(formErrors).length === 0 && isSubmit ? (
-							<>{<div className="success">Logged in successfully</div>}</>
-						) : (
-							"Login"
-						)}
+							Login
 					</Modal.Body>
 				</Modal.Header>
 

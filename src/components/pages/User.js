@@ -16,7 +16,10 @@ function User() {
 
 	const getUser = async () => {
 		await axios
-			.get("/dispatcher/users/username/" + username)
+			.get("/dispatcher/users/username/" + username, {
+				headers: { "Content-Type": "application/json" },
+				withCredentials: true,
+			})
 			.then((response) => {
 				setCurrUser(response.data[0]);
 			})
@@ -35,7 +38,7 @@ function User() {
 			});
 	};
 	const loanBook = async (id) => {
-		console.log(id)
+		console.log(id);
 		await axios
 			.post(
 				"/dispatcher/bookloans",
@@ -47,7 +50,7 @@ function User() {
 				}
 			)
 			.then((response) => {
-				console.log(response)
+				console.log(response);
 				getReservations();
 				getBookLoans();
 			})
@@ -57,14 +60,11 @@ function User() {
 	};
 	const returnBook = async (id) => {
 		await axios
-			.put(
-				"/dispatcher/bookloans/return",
-				{
-					data: { id: id },
-					headers: { "Content-Type": "application/json" },
-					withCredentials: true,
-				}
-			)
+			.put("/dispatcher/bookloans/return", {
+				data: { id: id },
+				headers: { "Content-Type": "application/json" },
+				withCredentials: true,
+			})
 			.then((response) => {
 				getReservations();
 				getBookLoans();

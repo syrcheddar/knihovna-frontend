@@ -22,7 +22,7 @@ function Profile() {
 
 	const getReservations = async () => {
 		await axios
-			.get("/dispatcher/users/" + user.username + "/reservations")
+			.get("/dispatcher/users/" + username + "/reservations")
 			.then((response) => {
 				setReservation(response.data);
 				console.log(response.data);
@@ -34,7 +34,7 @@ function Profile() {
 
 	const getBookLoans = async () => {
 		await axios
-			.get("/dispatcher/users/" + user.username + "/bookloans")
+			.get("/dispatcher/users/" + username + "/bookloans")
 			.then((response) => {
 				setBookLoan(response.data);
 				//console.log(response.data);

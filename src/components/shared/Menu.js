@@ -91,7 +91,8 @@ function Menu() {
 									setUser(null);
 									axios
 										.get("dispatcher/users/logout", { withCredentials: true })
-										.then(setUser(React.createContext(null)));
+										.then(setUser(React.createContext(null)))
+										.finally(navigate("/"));
 								}}
 							>
 								Logout

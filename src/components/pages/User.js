@@ -35,7 +35,7 @@ function User() {
 			});
 	};
 	const loanBook = async (id) => {
-		console.log(id);
+		console.log(id)
 		await axios
 			.post(
 				"/dispatcher/bookloans",
@@ -47,7 +47,7 @@ function User() {
 				}
 			)
 			.then((response) => {
-				console.log(response);
+				console.log(response)
 				getReservations();
 				getBookLoans();
 			})
@@ -57,11 +57,14 @@ function User() {
 	};
 	const returnBook = async (id) => {
 		await axios
-			.put("/dispatcher/bookloans/return", {
-				data: { id: id },
-				headers: { "Content-Type": "application/json" },
-				withCredentials: true,
-			})
+			.put(
+				"/dispatcher/bookloans/return",
+				{
+					data: { id: id },
+					headers: { "Content-Type": "application/json" },
+					withCredentials: true,
+				}
+			)
 			.then((response) => {
 				getReservations();
 				getBookLoans();
